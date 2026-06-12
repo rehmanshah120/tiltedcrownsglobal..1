@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tilted Crowns Global | Braids & Hair Artistry</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --ivory: #FAF7F2;
+    --deep: #0E0A06;
+    --charcoal: #1C1812;
+    --muted: #7A6E62;
+    --rose: #C4836A;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--deep);
+    color: var(--ivory);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(14,10,6,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    transition: padding 0.3s;
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.45rem;
+    font-weight: 300;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+  }
+  .nav-logo span { font-style: italic; font-weight: 600; color: var(--gold); }
+
+  .nav-links {
+    display: flex; gap: 2.8rem; list-style: none;
+  }
+  .nav-links a {
+    font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--ivory); text-decoration: none; opacity: 0.7;
+    transition: opacity 0.2s, color 0.2s;
+  }
+  .nav-links a:hover { opacity: 1; color: var(--gold-light); }
+
+  .nav-cta {
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 0.5rem 1.4rem;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+    cursor: pointer; transition: all 0.25s;
+    text-decoration: none;
+  }
+  .nav-cta:hover { background: var(--gold); color: var(--deep); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 9rem 5rem 5rem 6rem;
+    position: relative; z-index: 2;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.68rem; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.6rem;
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block; width: 36px; height: 1px;
+    background: var(--gold);
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.2rem, 5.5vw, 5.8rem);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.8rem;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero-sub {
+    font-size: 0.92rem; line-height: 1.8; color: rgba(250,247,242,0.65);
+    max-width: 380px; margin-bottom: 3rem;
+    font-weight: 300; letter-spacing: 0.03em;
+  }
+
+  .hero-actions {
+    display: flex; gap: 1.2rem; align-items: center;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--deep);
+    padding: 0.9rem 2.4rem;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.74rem; letter-spacing: 0.2em; text-transform: uppercase;
+    border: none; cursor: pointer;
+    text-decoration: none; display: inline-block;
+    transition: background 0.25s;
+    font-weight: 500;
+  }
+  .btn-primary:hover { background: var(--gold-light); }
+
+  .btn-ghost {
+    color: var(--ivory); font-size: 0.74rem; letter-spacing: 0.15em;
+    text-transform: uppercase; text-decoration: none;
+    display: flex; align-items: center; gap: 0.5rem;
+    opacity: 0.7; transition: opacity 0.2s;
+  }
+  .btn-ghost:hover { opacity: 1; }
+  .btn-ghost::after { content: '→'; font-size: 1rem; }
+
+  .hero-right {
+    position: relative; overflow: hidden;
+  }
+
+  /* Mosaic collage of braid images */
+  .hero-mosaic {
+    position: absolute; inset: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 3px;
+    background: var(--charcoal);
+  }
+
+  .mosaic-cell {
+    overflow: hidden; position: relative;
+  }
+
+  .mosaic-cell img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+    filter: brightness(0.88) saturate(1.1);
+  }
+  .mosaic-cell:hover img { transform: scale(1.06); }
+
+  .mosaic-cell.tall {
+    grid-row: 1 / 3;
+  }
+
+  /* Overlay gold tint on hero mosaic */
+  .hero-right::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(14,10,6,0.5) 0%, transparent 50%);
+    pointer-events: none; z-index: 1;
+  }
+
+  .hero-scroll-indicator {
+    position: absolute; bottom: 2.5rem; left: 6rem;
+    font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--muted);
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .scroll-line {
+    width: 40px; height: 1px; background: var(--muted);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollPulse { 0%,100%{width:24px;opacity:0.4} 50%{width:48px;opacity:1} }
+
+  /* ── MARQUEE ── */
+  .marquee-bar {
+    background: var(--gold);
+    padding: 0.7rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .marquee-track {
+    display: inline-block;
+    animation: marquee 22s linear infinite;
+  }
+  .marquee-track span {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.8rem; font-weight: 600; font-style: italic;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--deep);
+    padding: 0 2.5rem;
+  }
+  .marquee-track span::before {
+    content: '✦'; margin-right: 2.5rem; font-size: 0.6rem;
+  }
+  @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* ── ABOUT ── */
+  .about {
+    display: grid; grid-template-columns: 1fr 1fr;
+    min-height: 80vh; align-items: center;
+  }
+
+  .about-image-wrap {
+    position: relative; height: 600px; overflow: hidden;
+  }
+  .about-image-wrap img {
+    width: 100%; height: 100%;
+    object-fit: cover; filter: brightness(0.9);
+  }
+  .about-badge {
+    position: absolute; bottom: 3rem; right: -1.5rem;
+    width: 140px; height: 140px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--deep);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+    z-index: 2;
+  }
+  .about-badge .badge-num {
+    font-size: 2.2rem; font-weight: 600; line-height: 1;
+  }
+  .about-badge .badge-label {
+    font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase;
+    font-family: 'Jost', sans-serif; margin-top: 0.2rem;
+  }
+
+  .about-text {
+    padding: 5rem 6rem 5rem 5rem;
+  }
+
+  .section-eyebrow {
+    font-size: 0.65rem; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.4rem;
+    display: flex; align-items: center; gap: 0.7rem;
+  }
+  .section-eyebrow::before {
+    content: ''; display: block;
+    width: 28px; height: 1px; background: var(--gold);
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3.2rem);
+    font-weight: 300; line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+  .section-title em { font-style: italic; color: var(--gold-light); }
+
+  .about-text p {
+    font-size: 0.9rem; line-height: 1.9;
+    color: rgba(250,247,242,0.65); font-weight: 300;
+    margin-bottom: 1rem;
+  }
+
+  .stats-row {
+    display: flex; gap: 3rem; margin-top: 2.5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(201,168,76,0.2);
+  }
+  .stat-item {}
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.6rem; font-weight: 300; color: var(--gold);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--muted); margin-top: 0.3rem;
+  }
+
+  /* ── SERVICES ── */
+  .services {
+    padding: 8rem 6rem;
+    background: var(--charcoal);
+  }
+
+  .services-header {
+    text-align: center; margin-bottom: 5rem;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: rgba(201,168,76,0.08);
+  }
+
+  .service-card {
+    background: var(--deep);
+    padding: 3rem 2.5rem;
+    position: relative; overflow: hidden;
+    transition: background 0.3s;
+    cursor: default;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute; bottom: 0; left: 0;
+    width: 0; height: 2px;
+    background: var(--gold);
+    transition: width 0.4s ease;
+  }
+  .service-card:hover { background: rgba(201,168,76,0.06); }
+  .service-card:hover::before { width: 100%; }
+
+  .service-icon {
+    font-size: 2rem; margin-bottom: 1.5rem;
+  }
+
+  .service-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem; font-weight: 400; font-style: italic;
+    color: var(--ivory); margin-bottom: 0.8rem; line-height: 1.2;
+  }
+
+  .service-desc {
+    font-size: 0.82rem; line-height: 1.8;
+    color: var(--muted); font-weight: 300;
+    margin-bottom: 1.5rem;
+  }
+
+  .service-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; color: var(--gold);
+  }
+
+  /* ── GALLERY ── */
+  .gallery {
+    padding: 8rem 6rem;
+  }
+  .gallery-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 3rem;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 260px 260px;
+    gap: 8px;
+  }
+
+  .g-item { overflow: hidden; position: relative; }
+  .g-item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease, filter 0.3s;
+    filter: brightness(0.85) saturate(1.05);
+  }
+  .g-item:hover img { transform: scale(1.08); filter: brightness(1) saturate(1.15); }
+
+  .g-item::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(14,10,6,0.6) 0%, transparent 50%);
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .g-item:hover::after { opacity: 1; }
+
+  .g-item:nth-child(1) { grid-column: span 5; grid-row: span 2; }
+  .g-item:nth-child(2) { grid-column: span 4; }
+  .g-item:nth-child(3) { grid-column: span 3; }
+  .g-item:nth-child(4) { grid-column: span 3; }
+  .g-item:nth-child(5) { grid-column: span 4; }
+
+  /* ── BOOKING ── */
+  .booking {
+    background: var(--charcoal);
+    display: grid; grid-template-columns: 1fr 1fr;
+    min-height: 70vh;
+  }
+
+  .booking-text {
+    padding: 7rem 5rem;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+
+  .booking-text p {
+    font-size: 0.9rem; line-height: 1.9;
+    color: rgba(250,247,242,0.6); font-weight: 300;
+    margin-top: 1.5rem; margin-bottom: 2.5rem;
+    max-width: 400px;
+  }
+
+  .booking-form-wrap {
+    background: var(--deep);
+    padding: 5rem 4rem;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+
+  .form-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem; font-style: italic;
+    margin-bottom: 2rem; color: var(--gold-light);
+  }
+
+  .form-group {
+    margin-bottom: 1.4rem;
+  }
+  .form-group label {
+    display: block;
+    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 0.4rem;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    background: transparent;
+    border: none; border-bottom: 1px solid rgba(201,168,76,0.3);
+    padding: 0.6rem 0;
+    color: var(--ivory);
+    font-family: 'Jost', sans-serif; font-size: 0.88rem;
+    outline: none;
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
+  }
+  .form-group select option { background: var(--charcoal); }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-bottom-color: var(--gold);
+  }
+  .form-group textarea { resize: none; height: 80px; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+
+  .form-submit {
+    width: 100%;
+    background: var(--gold);
+    color: var(--deep);
+    border: none;
+    padding: 1rem;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.74rem; letter-spacing: 0.2em; text-transform: uppercase;
+    font-weight: 500; cursor: pointer;
+    margin-top: 1rem;
+    transition: background 0.25s;
+  }
+  .form-submit:hover { background: var(--gold-light); }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials {
+    padding: 8rem 6rem;
+    text-align: center;
+  }
+  .testimonials-header { margin-bottom: 4rem; }
+
+  .testi-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+  }
+
+  .testi-card {
+    background: var(--charcoal);
+    padding: 2.5rem 2rem;
+    text-align: left;
+    position: relative;
+  }
+
+  .testi-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem; color: var(--gold);
+    opacity: 0.3; line-height: 0.6;
+    margin-bottom: 1rem;
+  }
+
+  .testi-text {
+    font-size: 0.88rem; line-height: 1.85;
+    color: rgba(250,247,242,0.7); font-weight: 300;
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .testi-author {
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  .testi-avatar {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.8rem; color: var(--deep); font-weight: 600;
+  }
+  .testi-name {
+    font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500;
+  }
+  .testi-stars {
+    font-size: 0.7rem; color: var(--gold); letter-spacing: 0.05em;
+  }
+
+  /* ── INSTAGRAM ── */
+  .insta-strip {
+    background: var(--charcoal);
+    padding: 5rem 6rem;
+  }
+  .insta-header {
+    text-align: center; margin-bottom: 3rem;
+  }
+  .insta-handle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem; font-style: italic; color: var(--gold-light);
+    margin-bottom: 0.5rem;
+  }
+  .insta-sub {
+    font-size: 0.72rem; letter-spacing: 0.2em;
+    color: var(--muted); text-transform: uppercase;
+  }
+  .insta-grid {
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px;
+  }
+  .insta-cell {
+    aspect-ratio: 1;
+    overflow: hidden; position: relative;
+    background: var(--deep);
+  }
+  .insta-cell img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s, filter 0.3s;
+    filter: brightness(0.85);
+  }
+  .insta-cell:hover img { transform: scale(1.1); filter: brightness(1); }
+  .insta-cell::after {
+    content: '♡';
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; color: white;
+    opacity: 0; transition: opacity 0.3s;
+    background: rgba(201,168,76,0.2);
+  }
+  .insta-cell:hover::after { opacity: 1; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--deep);
+    border-top: 1px solid rgba(201,168,76,0.12);
+    padding: 4rem 6rem 2rem;
+  }
+  .footer-top {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem;
+    margin-bottom: 3rem;
+  }
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem; font-weight: 300; letter-spacing: 0.12em;
+    color: var(--gold-light); text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .footer-logo span { font-style: italic; }
+  .footer-tagline {
+    font-size: 0.82rem; color: var(--muted); line-height: 1.7; font-weight: 300;
+    max-width: 260px;
+  }
+  .footer-col-title {
+    font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.2rem;
+  }
+  .footer-links { list-style: none; }
+  .footer-links li { margin-bottom: 0.6rem; }
+  .footer-links a {
+    font-size: 0.82rem; color: var(--muted); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--ivory); }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(201,168,76,0.1);
+    padding-top: 1.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-copy {
+    font-size: 0.72rem; color: var(--muted); letter-spacing: 0.05em;
+  }
+  .social-row {
+    display: flex; gap: 1.2rem;
+  }
+  .social-row a {
+    font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--muted); text-decoration: none; transition: color 0.2s;
+  }
+  .social-row a:hover { color: var(--gold); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 2rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 7rem 2rem 3rem; }
+    .hero-right { height: 55vw; }
+    .about { grid-template-columns: 1fr; }
+    .about-image-wrap { height: 320px; }
+    .about-text { padding: 3rem 2rem; }
+    .services { padding: 4rem 2rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .gallery { padding: 4rem 2rem; }
+    .gallery-grid { display: flex; flex-wrap: wrap; gap: 6px; }
+    .g-item { flex: 0 0 calc(50% - 3px); height: 200px; }
+    .g-item:nth-child(1) { flex: 0 0 100%; height: 260px; }
+    .booking { grid-template-columns: 1fr; }
+    .booking-text { padding: 4rem 2rem 2rem; }
+    .booking-form-wrap { padding: 3rem 2rem; }
+    .testimonials { padding: 5rem 2rem; }
+    .testi-grid { grid-template-columns: 1fr; }
+    .insta-strip { padding: 4rem 2rem; }
+    .insta-grid { grid-template-columns: repeat(3, 1fr); }
+    .insta-cell:nth-child(n+4) { display: none; }
+    .insta-cell { display: block; }
+    footer { padding: 3rem 2rem 2rem; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .stats-row { gap: 2rem; }
+  }
+
+  /* Fade-in animation */
+  .reveal {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1; transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo"><span>Tilted</span> Crowns Global</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#booking">Book</a></li>
+  </ul>
+  <a href="#booking" class="nav-cta">Book Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Hair Artistry &amp; Braid Studio</div>
+    <h1 class="hero-title">
+      Wear Your<br>
+      <em>Crown</em><br>
+      With Pride
+    </h1>
+    <p class="hero-sub">
+      Premium braid artistry and natural hair styling rooted in culture, crafted with care. Every style is a statement — yours to own.
+    </p>
+    <div class="hero-actions">
+      <a href="#booking" class="btn-primary">Book Your Session</a>
+      <a href="#gallery" class="btn-ghost">View Gallery</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-mosaic">
+      <!-- Tall left image -->
+      <div class="mosaic-cell tall">
+        <img src="https://images.unsplash.com/photo-1617791160505-6f00504e3519?w=600&q=80&fit=crop" alt="Knotless box braids">
+      </div>
+      <!-- Right column top -->
+      <div class="mosaic-cell">
+        <img src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=400&q=80&fit=crop" alt="Cornrows hairstyle">
+      </div>
+      <!-- Right column bottom -->
+      <div class="mosaic-cell">
+        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&q=80&fit=crop" alt="Protective braids style">
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-scroll-indicator">
+    <div class="scroll-line"></div>
+    Scroll to explore
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-bar">
+  <div class="marquee-track">
+    <span>Knotless Box Braids</span>
+    <span>Cornrows</span>
+    <span>Goddess Braids</span>
+    <span>Faux Locs</span>
+    <span>Feed-In Braids</span>
+    <span>Passion Twists</span>
+    <span>Senegalese Twists</span>
+    <span>Fulani Braids</span>
+    <span>Knotless Box Braids</span>
+    <span>Cornrows</span>
+    <span>Goddess Braids</span>
+    <span>Faux Locs</span>
+    <span>Feed-In Braids</span>
+    <span>Passion Twists</span>
+    <span>Senegalese Twists</span>
+    <span>Fulani Braids</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-image-wrap reveal">
+    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=700&q=80&fit=crop" alt="Hair stylist at work">
+    <div class="about-badge">
+      <div class="badge-num">500+</div>
+      <div class="badge-label">Happy Clients</div>
+    </div>
+  </div>
+  <div class="about-text reveal">
+    <div class="section-eyebrow">Our Story</div>
+    <h2 class="section-title">More Than a Style —<br><em>A Heritage</em></h2>
+    <p>
+      Tilted Crowns Global was born from a deep love of Black hair culture and the artistry that has been passed through generations. We believe every braid tells a story, and we are here to help you tell yours.
+    </p>
+    <p>
+      From classic cornrows to intricate knotless box braids, our skilled stylists combine traditional technique with modern flair to create looks that protect, empower, and celebrate your natural beauty.
+    </p>
+    <div class="stats-row">
+      <div class="stat-item">
+        <div class="stat-num">5+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">20+</div>
+        <div class="stat-label">Braid Styles</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">★ 4.9</div>
+        <div class="stat-label">Client Rating</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-header reveal">
+    <div class="section-eyebrow" style="justify-content:center">What We Offer</div>
+    <h2 class="section-title">Our <em>Signature Services</em></h2>
+  </div>
+
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-icon">🪢</div>
+      <div class="service-name">Knotless Box Braids</div>
+      <p class="service-desc">The ultimate protective style. Our knotless technique reduces tension and gives a seamless, natural-looking root for maximum comfort and longevity.</p>
+      <div class="service-price">Starting from $120</div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">✦</div>
+      <div class="service-name">Cornrows & Feed-In Braids</div>
+      <p class="service-desc">Clean, precise parts and sleek styling. Perfect as a standalone look or as a foundation for other protective styles. Kids' styles available.</p>
+      <div class="service-price">Starting from $60</div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🌿</div>
+      <div class="service-name">Faux Locs & Goddess Locs</div>
+      <p class="service-desc">Earthy, bohemian, and absolutely stunning. Achieve the loc lifestyle without the commitment — fully customizable in length and color.</p>
+      <div class="service-price">Starting from $180</div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🌀</div>
+      <div class="service-name">Passion & Senegalese Twists</div>
+      <p class="service-desc">Lightweight and versatile. These elegant two-strand twists are ideal for low-manipulation styling while still turning heads everywhere you go.</p>
+      <div class="service-price">Starting from $140</div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">👑</div>
+      <div class="service-name">Fulani & Tribal Braids</div>
+      <p class="service-desc">Culturally rich styles with intricate cornrow patterns, beads, and cuffs. A crown that connects you to your roots — and commands every room.</p>
+      <div class="service-price">Starting from $100</div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">💎</div>
+      <div class="service-name">Kids' Braiding</div>
+      <p class="service-desc">Gentle, age-appropriate protective styles designed for little ones. We create a fun, calm experience while keeping tender scalps comfortable.</p>
+      <div class="service-price">Starting from $45</div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="gallery-header">
+    <div>
+      <div class="section-eyebrow">Our Work</div>
+      <h2 class="section-title"><em>Fresh From</em> the Chair</h2>
+    </div>
+    <a href="https://www.instagram.com/tiltedcrownsglobal" target="_blank" class="btn-ghost" style="color:var(--gold-light); opacity:1">
+      @tiltedcrownsglobal
+    </a>
+  </div>
+
+  <div class="gallery-grid">
+    <div class="g-item reveal">
+      <img src="https://images.unsplash.com/photo-1617791160536-598cf32026fb?w=700&q=80&fit=crop" alt="Knotless braids">
+    </div>
+    <div class="g-item reveal">
+      <img src="https://images.unsplash.com/photo-1559599238-308793637427?w=500&q=80&fit=crop" alt="Braided updo">
+    </div>
+    <div class="g-item reveal">
+      <img src="https://images.unsplash.com/photo-1605980776566-0486c3ac7617?w=400&q=80&fit=crop" alt="Protective style">
+    </div>
+    <div class="g-item reveal">
+      <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=400&q=80&fit=crop" alt="Natural hair">
+    </div>
+    <div class="g-item reveal">
+      <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=500&q=80&fit=crop" alt="Hair styling">
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="booking" id="booking">
+  <div class="booking-text">
+    <div class="section-eyebrow">Appointments</div>
+    <h2 class="section-title">Ready to <em>Get Crowned?</em></h2>
+    <p>
+      Secure your seat at the chair. We recommend booking at least 48 hours in advance for braiding services. Consultations for custom looks are always welcome — reach out via Instagram or fill out the form.
+    </p>
+    <a href="https://www.instagram.com/tiltedcrownsglobal" target="_blank" class="btn-ghost" style="color:var(--gold-light);opacity:1">
+      DM on Instagram
+    </a>
+  </div>
+
+  <div class="booking-form-wrap">
+    <div class="form-title">Book Your Appointment</div>
+    <form onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" placeholder="Amara" required>
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" placeholder="Williams" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" placeholder="amara@email.com" required>
+      </div>
+      <div class="form-group">
+        <label>Phone</label>
+        <input type="tel" placeholder="+1 (555) 000-0000">
+      </div>
+      <div class="form-group">
+        <label>Service</label>
+        <select required>
+          <option value="" disabled selected>Choose a service</option>
+          <option>Knotless Box Braids</option>
+          <option>Cornrows & Feed-In Braids</option>
+          <option>Faux Locs / Goddess Locs</option>
+          <option>Passion / Senegalese Twists</option>
+          <option>Fulani & Tribal Braids</option>
+          <option>Kids' Braiding</option>
+          <option>Consultation</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Preferred Date</label>
+          <input type="date">
+        </div>
+        <div class="form-group">
+          <label>Preferred Time</label>
+          <input type="time">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Notes / Special Requests</label>
+        <textarea placeholder="Any details about your desired style, hair type, inspo, etc."></textarea>
+      </div>
+      <button type="submit" class="form-submit">Request Appointment</button>
+    </form>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="testimonials-header reveal">
+    <div class="section-eyebrow" style="justify-content:center">Client Love</div>
+    <h2 class="section-title">What They're <em>Saying</em></h2>
+  </div>
+
+  <div class="testi-grid">
+    <div class="testi-card reveal">
+      <div class="testi-quote">"</div>
+      <p class="testi-text">My box braids lasted 8 weeks and still looked fresh. The technique is literally unmatched — zero tension, zero breakage. Tilted Crowns is my forever stylist.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">ZA</div>
+        <div>
+          <div class="testi-name">Zara A.</div>
+          <div class="testi-stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-quote">"</div>
+      <p class="testi-text">I showed up with a reference photo and she nailed it perfectly. The Fulani braids with beads had everyone asking who did my hair. Absolutely obsessed.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">NK</div>
+        <div>
+          <div class="testi-name">Nadia K.</div>
+          <div class="testi-stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-quote">"</div>
+      <p class="testi-text">Brought my daughter in for cornrows and she made the whole experience so calm and fun. The parts were so clean and the style held beautifully. We'll be back every month!</p>
+      <div class="testi-author">
+        <div class="testi-avatar">TM</div>
+        <div>
+          <div class="testi-name">Tanya M.</div>
+          <div class="testi-stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM STRIP -->
+<div class="insta-strip">
+  <div class="insta-header reveal">
+    <div class="insta-handle">@tiltedcrownsglobal</div>
+    <div class="insta-sub">Follow us on Instagram for daily inspo</div>
+  </div>
+  <div class="insta-grid">
+    <div class="insta-cell"><img src="https://images.unsplash.com/photo-1617791160505-6f00504e3519?w=300&q=80&fit=crop" alt=""></div>
+    <div class="insta-cell"><img src="https://images.unsplash.com/photo-1559599238-308793637427?w=300&q=80&fit=crop" alt=""></div>
+    <div class="insta-cell"><img src="https://images.unsplash.com/photo-1617791160536-598cf32026fb?w=300&q=80&fit=crop" alt=""></div>
+    <div class="insta-cell"><img src="https://images.unsplash.com/photo-1605980776566-0486c3ac7617?w=300&q=80&fit=crop" alt=""></div>
+    <div class="insta-cell"><img src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=300&q=80&fit=crop" alt=""></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo"><span>Tilted</span> Crowns Global</div>
+      <p class="footer-tagline">Premium braid artistry rooted in culture, crafted with love. Wear your crown — always.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Services</div>
+      <ul class="footer-links">
+        <li><a href="#services">Knotless Box Braids</a></li>
+        <li><a href="#services">Cornrows</a></li>
+        <li><a href="#services">Faux Locs</a></li>
+        <li><a href="#services">Twists</a></li>
+        <li><a href="#services">Kids' Styles</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Info</div>
+      <ul class="footer-links">
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#booking">Book Now</a></li>
+        <li><a href="https://www.instagram.com/tiltedcrownsglobal" target="_blank">Instagram</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <ul class="footer-links">
+        <li><a href="#">DM on Instagram</a></li>
+        <li><a href="#">WhatsApp</a></li>
+        <li><a href="#">tiltedcrownsglobal</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 Tilted Crowns Global. All rights reserved.</div>
+    <div class="social-row">
+      <a href="https://www.instagram.com/tiltedcrownsglobal" target="_blank">Instagram</a>
+      <a href="#">TikTok</a>
+      <a href="#">Pinterest</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Form submission
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.form-submit');
+    btn.textContent = '✓ Request Sent!';
+    btn.style.background = '#5a8a5a';
+    btn.style.color = '#fff';
+    setTimeout(() => {
+      btn.textContent = 'Request Appointment';
+      btn.style.background = '';
+      btn.style.color = '';
+      e.target.reset();
+    }, 3000);
+  }
+</script>
+</body>
+</html>
